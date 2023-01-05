@@ -13,4 +13,18 @@
     <Compile Include="Library.fs" />
   </ItemGroup>
 
+
+  <PropertyGroup>
+    <Authors>Lukas Weil</Authors>
+    <Description>Functionality for resolving json-ld style json object references in .NET.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <!--<PackageProjectUrl>https://fslab.org/docs-template/</PackageProjectUrl>-->
+    <PackageTags>F# FSharp dotnet .Net Json Json-LD reference resolve id</PackageTags>
+    <RepositoryUrl>https://github.com/HLWeil/JsonRef.NET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <FsDocsLicenseLink>https://github.com/HLWeil/JsonRef.NET/blob/developer/LICENSE</FsDocsLicenseLink>
+    <FsDocsReleaseNotesLink>https://github.com/HLWeil/JsonRef.NET/blob/developer/RELEASE_NOTES.md</FsDocsReleaseNotesLink>
+    <FsDocsREADMELink>https://github.com/HLWeil/JsonRef.NET/blob/developer/README.md</FsDocsREADMELink>
+  </PropertyGroup>
+
 </Project>

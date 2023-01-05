@@ -1,0 +1,18 @@
+{
+    "firstLevel": {
+      "@id": "FirstLevel",
+      "value": {
+        "@id": "SecondLevel"
+      }
+    },
+    "secondLevel": {
+      "@id": "SecondLevel",
+      "ignoreValue": {
+        "@id": "ThirdLevel"
+      }
+    },
+    "thirdLevel": {
+      "@id": "ThirdLevel",
+      "value": "MyValue"
+    }
+  }

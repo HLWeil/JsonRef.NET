@@ -6,7 +6,7 @@ let project = "JsonRef.NET"
 
 let testProjects = 
     [
-        // add relative paths (from project root) to your testprojects here
+        "tests/Tests.fsproj"
     ]
 
 let solutionFile  = $"{project}.sln"

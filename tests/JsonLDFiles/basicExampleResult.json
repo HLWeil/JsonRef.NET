@@ -1,0 +1,10 @@
+{
+    "source": {
+      "@id" : "TheID",
+      "value" : "MyValue"
+    },
+    "target": {
+      "@id" : "TheID",
+      "value" : "MyValue"
+    }
+}

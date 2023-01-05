@@ -1,0 +1,24 @@
+{
+    "firstLevel": {
+      "@id" : "FirstLevel",
+      "value" : {      
+        "@id" : "SecondLevel",
+        "value" : {
+            "@id" : "ThirdLevel",
+            "value" : "MyValue"
+          }   
+      }
+    },
+    "secondLevel": {
+      "@id" : "SecondLevel",
+      "value" : {
+            "@id" : "ThirdLevel",
+            "value" : "MyValue"
+      }
+          
+    },
+    "thirdLevel": {
+        "@id" : "ThirdLevel",
+        "value" : "MyValue"
+    }
+  }

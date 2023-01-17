@@ -1,3 +1,10 @@
+### 0.0.2+e2f049e (Released 2023-1-17)
+* Additions:
+    * [[#e2f049e](https://github.com/HLWeil/JsonRef.NET/commit/e2f049e93d96cf9b388004e6c71e66adee6d305b)] small improvements to readme tutorial
+    * [[#7be599d](https://github.com/HLWeil/JsonRef.NET/commit/7be599ded6b4e13efab500f0cb6a80c643b74fe4)] add comments to all functions
+    * [[#c57f0f5](https://github.com/HLWeil/JsonRef.NET/commit/c57f0f54f65082faf779a9db71ed65015952fcde)] add basic readme tutorial
+    * [[#7a2a00b](https://github.com/HLWeil/JsonRef.NET/commit/7a2a00b4aa86af9db7b4a969bfd797d7a4f7373c)] add auxiliary files to project
+
 ### 0.0.1+d77928c (Released 2023-1-5)
 * Additions:
     * [[#c97c0d0](https://github.com/HLWeil/JsonRef.NET/commit/c97c0d0c6efd3a332f18352a39c07695a4331c60)] Initial commit

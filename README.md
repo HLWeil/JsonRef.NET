@@ -1,5 +1,5 @@
 # JsonRef.NET
-Library for resolving JSON-LD style object references. Based on System.Text.Json.
+Library for resolving JSON-Ref and JSON-LD style object references. Based on System.Text.Json.
 
 ```fsharp
 #r "nuget: JsonRef.NET"
@@ -106,18 +106,21 @@ JsonRefResolver.resolve(jsonString,options)
 ----
 ## Resolve references across files
 
-Currently there is no support for autodetection of recursive references. Instead, you can give a exclusion lists for fields that should not be resolved:
+If you want to insert JSON-LD objects of one json string into referencing objects of another string, you can use the following approach:
 
 ```fsharp
 
 #r "nuget: JsonRef.NET"
 
 open JsonRef.NET
+open System.Text.Json
 
-let options = Options |> Option.defaultValue JsonRefResolverOptions.defaultOptions
+let referencejsonNode = Nodes.JsonObject.Parse(referenceJsonString)
+let targetjsonNode = Nodes.JsonObject.Parse(targetJsonString)
+let options = JsonRefResolverOptions.defaultOptions
 
-let referenceObjects = JsonRefResolver.collectObjects(referenceJsonString,options)
+let referenceObjects = JsonRefResolver.collectObjects(referencejsonNode,options)
 
-JsonRefResolver.fillObjects(referenceObjects,targetJsonString,options)
-
+JsonRefResolver.fillObjects(referenceObjects,targetjsonNode,options)
+|> fun s -> s.ToJsonString()
 ```

@@ -10,7 +10,6 @@
     <Compile Include="Dictionary.fs" />
     <Compile Include="ResolverOptions.fs" />
     <Compile Include="Resolver.fs" />
-    <Compile Include="Library.fs" />
   </ItemGroup>
 
 

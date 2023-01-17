@@ -3,8 +3,10 @@
 open System.Collections.Generic
 open System.Text.Json
 
+/// Functions for resolving Json-LD style @id references for serialized json strings and System.Text.Json JsonNode objects
 type JsonRefResolver =
 
+    /// Collects all child objects of the given JsonNode, which contain a field with the key @id. Stores them as values in a dictionary, with the keys being the values of their @id fields
     static member collectObjects (n : Nodes.JsonNode,options : JsonRefResolverOptions) = 
         let mapping : Dictionary<string,Nodes.JsonObject> = Dictionary()
         let rec collect (n : Nodes.JsonNode) =
@@ -27,6 +29,7 @@ type JsonRefResolver =
         collect n
         mapping
 
+    /// Replaces all child objects of the given jsonNode that contain a field with the key @id with the objects that contain the same key in the given mappings
     static member fillObjects (mappings : Dictionary<string,Nodes.JsonObject>,n : Nodes.JsonNode,options : JsonRefResolverOptions) : Nodes.JsonNode = 
         let predicate s = Array.contains s options.IgnoreFields |> not
         let rec fill (n : Nodes.JsonNode) =
@@ -38,7 +41,6 @@ type JsonRefResolver =
                     let k = 
                         v.AsValue()
                         |> JsonValue.asString  
-                    printfn "%s" k
                     match Dictionary.tryGet k mappings with
                     | Some newO -> newO
                     | None -> o
@@ -55,11 +57,13 @@ type JsonRefResolver =
             | n -> n
         fill n
 
+    /// Resolves all Json-LD style @id references in the given JsonNode by replacing all referencing objects with the objects they reference.
     static member resolve(n : Nodes.JsonNode,?Options : JsonRefResolverOptions) =
         let options = Options |> Option.defaultValue JsonRefResolverOptions.defaultOptions
         let mapping = JsonRefResolver.collectObjects(n,options)
         JsonRefResolver.fillObjects(mapping,n,options)
 
+    /// Resolves all Json-LD style @id references in the given serialzed json string by replacing all referencing objects with the objects they reference.
     static member resolve(n : string,?Options : JsonRefResolverOptions) =
         let options = Options |> Option.defaultValue JsonRefResolverOptions.defaultOptions
         let n = Nodes.JsonObject.Parse(n)

@@ -1,3 +1,7 @@
+### 0.0.3+5e57060 (Released 2023-1-24)
+* Bugfixes:
+    * [[#5e57060](https://github.com/HLWeil/JsonRef.NET/commit/5e57060b322b0689a0841ae5677ff73b5ec24048)] fix resolver ignoring resursively nested ids
+
 ### 0.0.2+e2f049e (Released 2023-1-17)
 * Additions:
     * [[#e2f049e](https://github.com/HLWeil/JsonRef.NET/commit/e2f049e93d96cf9b388004e6c71e66adee6d305b)] small improvements to readme tutorial

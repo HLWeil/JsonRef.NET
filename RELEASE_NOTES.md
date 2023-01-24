@@ -1,3 +1,7 @@
+### 0.0.4+f64ded3 (Released 2023-1-24)
+* Additions:
+    * [[#f64ded3](https://github.com/HLWeil/JsonRef.NET/commit/f64ded3f5a88accac5b7d28c798ab25b7d2ab8ad)] add filterEmptyNodes function
+
 ### 0.0.3+5e57060 (Released 2023-1-24)
 * Bugfixes:
     * [[#5e57060](https://github.com/HLWeil/JsonRef.NET/commit/5e57060b322b0689a0841ae5677ff73b5ec24048)] fix resolver ignoring resursively nested ids

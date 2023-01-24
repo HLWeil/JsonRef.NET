@@ -1,0 +1,22 @@
+{
+  "@id": "FirstDepth",
+  "firstDepthChild": {
+      "@id": "SecondDepth",
+      "secondDepthChild": [
+          {
+              "@id": "ThirdDepth",
+              "thirdDepthChild": {
+                  "@id": "FourthDepth",
+                  "value": "Value"
+              }
+          }
+      ]
+  },
+  "references": [        
+      {
+          "thirdDepthReference": {
+              "@id": "ThirdDepth"
+          }
+      }
+  ]
+}

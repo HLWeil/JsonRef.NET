@@ -19,9 +19,9 @@ type JsonRefResolver =
                         v.AsValue()
                         |> JsonValue.asString                   
                     Dictionary.addMerge options.ObjectMerger k o mapping
-                | None ->
-                    JsonObject.getFields o
-                    |> List.iter (fun kv -> collect kv.Value)
+                | None -> ()
+                JsonObject.getFields o
+                |> List.iter (fun kv -> collect kv.Value)
             | Array a -> 
                 JsonArray.getElements a
                 |> List.iter collect

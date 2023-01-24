@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="JsonLDFiles\recursiveNestedExample.json" />
+    <Content Include="JsonLDFiles\recursiveNestedExampleResult.json" />
     <Content Include="JsonLDFiles\basicExample.json" />
     <Content Include="JsonLDFiles\basicExampleResult.json" />
     <Content Include="JsonLDFiles\ignoreRecursiveField.json" />

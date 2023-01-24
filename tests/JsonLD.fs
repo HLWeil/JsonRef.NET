@@ -47,6 +47,19 @@ let testJsonRefResolver =
 
             Expect.deepEquals actualString expectedString
         )
+        testCase "RecursivelyNestedObject" (fun () -> 
+            let file = Path.Combine(testFileFolder, "recursiveNestedExample.json")
+            let expectedResultFile = Path.Combine(testFileFolder, "recursiveNestedExampleResult.json")
+
+            let actualString =
+                File.ReadAllText file
+                |> JsonRefResolver.resolve
+
+            let expectedString = 
+                File.ReadAllText expectedResultFile
+
+            Expect.deepEquals actualString expectedString
+        )
         testCase "IgnoreFiled" (fun () -> 
             let file = Path.Combine(testFileFolder, "ignoreRecursiveField.json")
             let expectedResultFile = Path.Combine(testFileFolder, "ignoreRecursiveFieldResult.json")

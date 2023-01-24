@@ -67,6 +67,35 @@ type JsonRefResolver =
     static member resolve(n : string,?Options : JsonRefResolverOptions) =
         let options = Options |> Option.defaultValue JsonRefResolverOptions.defaultOptions
         let n = Nodes.JsonObject.Parse(n)
-        let mapping = JsonRefResolver.collectObjects(n,options)
-        JsonRefResolver.fillObjects(mapping,n,options)
+        JsonRefResolver.resolve(n,options)
+        |> fun n -> n.ToJsonString()
+
+    /// Recursively removes all fields with empty values from the node and its subnodes
+    static member filterEmptyNodes (n : Nodes.JsonNode) : Nodes.JsonNode = 
+        let rec filter (n : Nodes.JsonNode) =
+            match n with
+            | Object o -> 
+                JsonObject.getFields o 
+                |> List.choose (fun kv -> 
+                    if JsonNode.isEmpty kv.Value then
+                        None
+                    else 
+                        KeyValuePair.Create(kv.Key,filter kv.Value)
+                        |> Some
+                    )
+                |> JsonObject.ofFields
+                |> node
+            | Array a -> 
+                JsonArray.map filter a
+                |> node
+            | Value v ->  
+                v
+                |> node
+            | n -> n
+        filter n
+
+    /// Recursively removes all fields with empty values from the node and its subnodes
+    static member filterEmptyNodes (n : string) : string = 
+        Nodes.JsonObject.Parse(n)
+        |> JsonRefResolver.filterEmptyNodes
         |> fun n -> n.ToJsonString()

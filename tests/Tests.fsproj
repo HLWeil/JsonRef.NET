@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="JsonFilterFiles\filterEmptyFieldsExample.json" />
+    <Content Include="JsonFilterFiles\filterEmptyFieldsExampleResult.json" />
     <Content Include="JsonLDFiles\recursiveNestedExample.json" />
     <Content Include="JsonLDFiles\recursiveNestedExampleResult.json" />
     <Content Include="JsonLDFiles\basicExample.json" />
@@ -15,6 +17,7 @@
     <Content Include="JsonLDFiles\ignoreRecursiveFieldResult.json" />
     <Content Include="JsonLDFiles\nestedExample.json" />
     <Content Include="JsonLDFiles\nestedExampleResult.json" />
+    <Compile Include="JsonFilter.fs" />
     <Compile Include="JsonLD.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

@@ -23,6 +23,10 @@ module FSharpExtensions =
 
     /// Helper functions for JsonObject
     module JsonObject =
+    
+        /// Returns true, if the given JsonObject has no fields
+        let isEmpty (o : Nodes.JsonObject) = 
+            o.Count = 0
 
         /// Returns true, if the given JsonObject has a field with the given key
         let hasField (k : string) (o : Nodes.JsonObject) =
@@ -81,6 +85,10 @@ module FSharpExtensions =
     /// Helper functions for JsonValue
     module JsonValue = 
     
+        /// Returns true, if the given JsonValue has no fields
+        let isEmpty (v : Nodes.JsonValue) = 
+            v.ToJsonString() = "\"\""
+
         /// Returns the value as string
         let asString (v : Nodes.JsonValue) =
             let b,v = v.TryGetValue()
@@ -104,6 +112,10 @@ module FSharpExtensions =
     /// Helper functions for JsonArray
     module JsonArray = 
 
+        /// Returns true, if the given JsonArray has no values
+        let isEmpty (a : Nodes.JsonArray) = 
+            a.Count = 0
+            
         /// Returns all the elements of the JsonArray
         let getElements (a : Nodes.JsonArray) =
             a
@@ -116,8 +128,27 @@ module FSharpExtensions =
             |> Seq.toArray
             |> Nodes.JsonArray
 
-    [<AutoOpen>]
+    /// Helper functions for JsonNode
     module JsonNode =
+
+        /// Returns true, if the given JsonNode is any of its default empty values
+        let inline isEmpty (n : Nodes.JsonNode) : bool =
+            match n with 
+            | Object o -> JsonObject.isEmpty o
+            | Array a -> JsonArray.isEmpty a
+            | Value v ->  JsonValue.isEmpty v
+            | _ -> false
+
+        /// Parses a string to a JsonNode
+        let ofString (s : string) : Nodes.JsonNode =
+            Nodes.JsonObject.Parse(s)
+
+        /// Parses a JsonNode to a string
+        let toString (n : #Nodes.JsonNode) =
+            n.ToJsonString()
+
+    [<AutoOpen>]
+    module JsonNodeExtensions =
         /// Cast any child object of JsonNode to a JsonNode
         let inline node (n : #Nodes.JsonNode) : Nodes.JsonNode =
             n :> Nodes.JsonNode
